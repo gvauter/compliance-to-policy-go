@@ -19,12 +19,13 @@ const (
 	manifestSuffix = "-manifest.json"
 )
 
-// findOptions for plugin searching
 type findOptions struct {
 	providerIds []string
 	pluginType  string
 }
 
+// FindOption applies criteria to for plugin searching to
+// plugin.FindPlugins.
 type FindOption func(options *findOptions)
 
 // WithProviderIds filters available plugins based on a set of plugin ids.
@@ -42,10 +43,10 @@ func WithPluginType(pluginType string) FindOption {
 	}
 }
 
-// FindPlugins searches for available plugins in the plugin directory. The default is to
-// return them all.
+// FindPlugins searches for available plugins in the plugin directory. The default behavior is to
+// return all plugins discovered in the plugin directory.
 // You can optionally filter the list by different information such as a list
-// of provider IDs or plugin type.
+// of plugin ids or plugin type.
 //
 // The naming scheme for the manifest files in the plugin directory are the following:
 // "c2p-$PLUGIN-ID-manifest.json"
